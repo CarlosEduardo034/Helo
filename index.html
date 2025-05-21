@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #div {
+        display: none;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <main id="main">
+        <button id="btn">Não clique aqui!!!!</button>
+        <div id="div">
+            <h1 id="typewriter"></h1>
+            <img src="img/img02.jpeg" alt="" height="100px" width="100px">
+            <img src="img/img01.jpeg" alt="" height="100px" width="100px">
+            <img src="img/img03.jpeg" alt="" height="100px" width="100px">
+            <img src="img/img04.jpeg" alt="" height="100px" width="100px">
+            <img src="img/img05.jpeg" alt="" height="100px" width="100px">
+            <img src="img/img06.jpeg" alt="" height="100px" width="100px">
+            <p>Aumente o vlume :|</p>
+
+            <audio id="musica" src="mp3.mp3"></audio>
+        </div>
+    </main>
+    <script>
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", () => {
+            btn.style.display = "none";
+            type();
+            tocarAudio();
+
+            const main = document.getElementById("main");
+            main.style.backgroundColor = "rgb(177,210,253)";
+            const div = document.getElementById("div");
+            div.style.display = "block";
+        });
+
+        const text = "EU TE AMOOOOOO!!!!!!!";
+        const speed = 50;
+
+        let index = 0;
+        const typewriter = document.getElementById("typewriter");
+
+        function type() {
+            if (index < text.length) {
+                typewriter.textContent += text.charAt(index);
+                index++;
+            } else {
+                index = 0;
+                typewriter.textContent = "";
+            }
+            setTimeout(type, speed);
+        }
+
+        function tocarAudio() {
+            const audio01 = document.getElementById("musica");
+            audio01.play();
+        }
+    </script>
+</body>
+
+</html>
